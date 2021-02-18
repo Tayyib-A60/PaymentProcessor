@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -23,6 +23,7 @@
   <ItemGroup>
     <ProjectReference Include="..\PaymentProcessor.Repository\PaymentProcessor.Repository.csproj" />
     <ProjectReference Include="..\PaymentProcessor.Service\PaymentProcessor.Service.csproj" />
+    <ProjectReference Include="..\PaymentProcessor.Web\PaymentProcessor.Web.csproj" />
   </ItemGroup>
 
 </Project>
