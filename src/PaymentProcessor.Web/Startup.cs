@@ -18,6 +18,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using PaymentProcessor.Web.Helpers.Interfaces;
+using PaymentProcessor.Web.Helpers.Implementations;
 
 namespace PaymentProcessor.Web
 {
@@ -35,10 +37,12 @@ namespace PaymentProcessor.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<IUtilities, Utilities>();
             services.AddMvc().AddFluentValidation(mvcConfiguration => mvcConfiguration.RegisterValidatorsFromAssemblyContaining<Startup>());
             services.AddDbContext<AppDbContext>(opt =>
                 opt.UseSqlServer(Configuration.GetConnectionString("DbConnectionString")), ServiceLifetime.Singleton);
             services.AddAutoMapper(typeof(MappingProfile));
+            services.AddHttpClient();
             services.AddControllers();
             services.AddCors();
             services.AddSwaggerGen(c =>
